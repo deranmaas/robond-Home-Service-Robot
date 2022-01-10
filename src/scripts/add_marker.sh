@@ -28,6 +28,6 @@ sleep 5
 xterm -hold -e "
 cd $DIR;
 source devel/setup.bash;
-rosrun pick_objects pick_objects" &
+rosrun add_markers add_markers" &
 
 
