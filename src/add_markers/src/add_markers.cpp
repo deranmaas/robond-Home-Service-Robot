@@ -1,6 +1,5 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
-//#include <nav_msgs/Odometry.h> 
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 
 
@@ -13,15 +12,12 @@ double drop_x = -5.7;
 double drop_y = 1.6;
 
 
-//geometry_msgs::PoseWithCovarianceStamped
-
-//void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg) {
-void chatterCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg) {
-	//ROS_INFO("Seq: [%d]", msg->header.seq);
-	//ROS_INFO("Position-> x: [%f], y: [%f], z: [%f]", msg->pose.pose.position.x,msg->pose.pose.position.y, msg->pose.pose.position.z);
+void amclPoseCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg) {
+  // get the robot position
   double robot_x = msg->pose.pose.position.x;
   double robot_y = msg->pose.pose.position.y;
 
+  // compute distance to the pickup and drop zone
   double d_pickup = sqrt(pow(robot_x - pickup_x, 2) + pow(robot_y - pickup_y, 2));
   double d_drop = sqrt(pow(robot_x - drop_x, 2) + pow(robot_y - drop_y, 2));
   ROS_INFO("pickup: %8.2f, drop: %8.2f", d_pickup, d_drop);
@@ -35,14 +31,12 @@ void chatterCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& m
   }
 
   if (d_drop < 0.3) {
-    // Hide the marker
+    // Show the marker
     marker.pose.position.x = drop_x;
     marker.pose.position.y = drop_y;
     marker.action = visualization_msgs::Marker::ADD;
     marker_pub.publish(marker);
   }
-
-
 }
 
 int main( int argc, char** argv )
@@ -108,26 +102,8 @@ int main( int argc, char** argv )
   marker.pose.position.y = pickup_y;
   marker_pub.publish(marker);
 
-  //ros::Subscriber sub = n.subscribe("/odom",1000, chatterCallback);
-  ros::Subscriber sub = n.subscribe("/amcl_pose",1000, chatterCallback);
+  ros::Subscriber sub = n.subscribe("/amcl_pose",1000, amclPoseCallback);
   ros::spin(); 
 
-  // Sleep for 5 seconds
-  ros::Duration(5.0).sleep();
-
-  // Hide the marker
-  marker.action = visualization_msgs::Marker::DELETE;
-  marker_pub.publish(marker);
-
-  // Sleep for 5 seconds
-  ros::Duration(5.0).sleep();
-
-  // Publish the marker at the drop off zone
-  marker.action = visualization_msgs::Marker::ADD;
-  marker.pose.position.x = -5.7;
-  marker.pose.position.y = 1.6;
-  marker_pub.publish(marker);
-
-    // Sleep for 5 seconds
-  ros::Duration(5.0).sleep();
+  return 0;
 }

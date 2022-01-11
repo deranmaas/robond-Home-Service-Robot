@@ -1,6 +1,11 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
 
+double pickup_x = 3.6;
+double pickup_y = -6.0;
+double drop_x = -5.7;
+double drop_y = 1.6;
+
 int main( int argc, char** argv )
 {
   ros::init(argc, argv, "basic_shapes");
@@ -62,8 +67,8 @@ int main( int argc, char** argv )
 
   // Publish the marker at the pickup zone 
   marker.action = visualization_msgs::Marker::ADD;
-  marker.pose.position.x = 3.6;
-  marker.pose.position.y = -6.;
+  marker.pose.position.x = pickup_x;
+  marker.pose.position.y = pickup_y;
   marker_pub.publish(marker);
 
   // Sleep for 5 seconds
@@ -78,10 +83,12 @@ int main( int argc, char** argv )
 
   // Publish the marker at the drop off zone
   marker.action = visualization_msgs::Marker::ADD;
-  marker.pose.position.x = -5.7;
-  marker.pose.position.y = 1.6;
+  marker.pose.position.x = drop_x;
+  marker.pose.position.y = drop_y;
   marker_pub.publish(marker);
 
     // Sleep for 5 seconds
   ros::Duration(5.0).sleep();
+
+  return 0;
 }
