@@ -5,7 +5,7 @@ DIR="$( cd "$(dirname $(realpath $0))/../.." >/dev/null 2>&1 && pwd )"
 xterm -hold -e  "
 cd $DIR;
 source devel/setup.bash;
-export TURTLEBOT_GAZEBO_WORLD_FILE='$DIR/src/world/myoffice_new.world';
+export TURTLEBOT_GAZEBO_WORLD_FILE='$DIR/src/worlds/myoffice_v3.world';
 roslaunch turtlebot_gazebo turtlebot_world.launch" &
 
 sleep 5

@@ -1,10 +1,10 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
 
-double pickup_x = 3.6;
-double pickup_y = -6.0;
-double drop_x = -5.7;
-double drop_y = 1.6;
+double pickup_x = 5.8;
+double pickup_y = 3.8;
+double drop_x = -1.7;
+double drop_y = -3.5;
 
 int main( int argc, char** argv )
 {
