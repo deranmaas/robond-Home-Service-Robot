@@ -41,7 +41,7 @@ void amclPoseCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& 
 
 int main( int argc, char** argv )
 {
-  ros::init(argc, argv, "basic_shapes");
+  ros::init(argc, argv, "add_markers");
   ros::NodeHandle n;
   marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
   // Set our initial shape type to be a cube
