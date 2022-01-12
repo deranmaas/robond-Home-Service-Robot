@@ -1,6 +1,20 @@
 # Home Service Robot
 
-![navigation](./images/navigation.png)
+## Step 1: Simulation Environment
+
+![world](./images/world.png)
+
+## Step 2: Mapping
+
+![slam](./images/slam.gif)
+
+The final map:
+
+![map](./images/map.png)
+
+## Step 3: Navigation and Path Planning
+
+![map](./images/pick_up.gif)
 
 ## A brief description of the used packages
 
