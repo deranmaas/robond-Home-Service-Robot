@@ -12,10 +12,10 @@ The simulation has been created in gazebo. It contains several rooms and many fe
 ![world](./images/world.png)\
 *Figure 1: Simulated world in gazebo.*
 
-## Step 2: Mapping
+## Step 2: SLAM based Mapping
 
-Run `test_slam.sh` to start the lidar based mapping. Navigate the robot around to build the map. Once the map looks good,
-run `rosrun map_server map_saver -f map.yaml` to save the map.
+Run `test_slam.sh` to start the lidar based mapping. Navigate the robot around to build the map. Once the map looks
+good, run `rosrun map_server map_saver -f map.yaml` to save the map.
 
 ![slam](./images/slam.gif)\
 *Figure 2: SLAM demo.*
@@ -25,19 +25,19 @@ run `rosrun map_server map_saver -f map.yaml` to save the map.
 
 ## Step 3: Navigation and Path Planning
 
-The localization is based on a probabilistic algorithm, namely adaptive (or KLD-sampling) Monte Carlo localization, 
-which uses a particle filter to track the pose of a robot against a known map. The ROS navigation stack creates a path for the robot while avoiding obstacles. It is based on Dijkstra's algorithm, a
-variant of the Uniform Cost Search algorithm.
+The localization is based on a probabilistic algorithm, namely adaptive (or KLD-sampling) Monte Carlo localization,
+which uses a particle filter to track the pose of a robot against a known map. The ROS navigation stack creates a path
+for the robot while avoiding obstacles. It is based on Dijkstra's algorithm, a variant of the Uniform Cost Search
+algorithm.
 
-Run `test_navigation.sh` to manually navigate through the environment. Run `pick_objects.sh` to automatically navigate
-to the pickup location, wait 5 seconds and navigate to the drop-off location.
+Run `test_navigation.sh` to manually select navigation goals. Run `pick_objects.sh` to automatically navigate to the
+pickup location, wait 5 seconds and navigate to the drop-off location.
 
 ![navigation](./images/navigation_zones.png)\
 *Figure 4: Pickup and drop-off locations.*
 
 ![pick_up](./images/pick_up.gif)\
 *Figure 5: Navigation demo.*
-
 
 ## A brief description of the used packages
 
