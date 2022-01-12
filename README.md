@@ -9,7 +9,7 @@ a simulated environment.
 
 The simulation has been created in gazebo. It contains several rooms and many features.
 
-![world](./images/world.png)
+![world](./images/world.png)\
 *Figure 1: Simulated world in gazebo.*
 
 ## Step 2: Mapping
@@ -17,10 +17,10 @@ The simulation has been created in gazebo. It contains several rooms and many fe
 Run `test_slam.sh` to start the lidar based mapping. Navigate the robot around to build the map. Once the map looks good,
 run `rosrun map_server map_saver -f map.yaml` to save the map.
 
-![slam](./images/slam.gif)
+![slam](./images/slam.gif)\
 *Figure 2: SLAM demo.*
 
-![map](./images/map.png)
+![map](./images/map.png)\
 *Figure 3: Final map.*
 
 ## Step 3: Navigation and Path Planning
@@ -32,10 +32,10 @@ variant of the Uniform Cost Search algorithm.
 Run `test_navigation.sh` to manually navigate through the environment. Run `pick_objects.sh` to automatically navigate
 to the pickup location, wait 5 seconds and navigate to the drop-off location.
 
-![navigation](./images/navigation_zones.png)
+![navigation](./images/navigation_zones.png)\
 *Figure 4: Pickup and drop-off locations.*
 
-![pick_up](./images/pick_up.gif)
+![pick_up](./images/pick_up.gif)\
 *Figure 5: Navigation demo.*
 
 
